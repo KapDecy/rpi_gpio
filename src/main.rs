@@ -10,13 +10,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     // parity bit, 8 data bits and 1 stop bit.
     let mut uart = Uart::new(115_200, Parity::None, 9, 0)?;
 
-    uart.set_write_mode(true).unwrap();
+    // uart.set_write_mode(true).unwrap();
 
-    let mut i = 0;
+    // let mut i = 0;
 
     loop {
-        uart.write(&[i]).unwrap();
-        i += 1;
+        uart.write("I'm from rpi".as_bytes()).unwrap();
+        // i += 1;
         std::thread::sleep(Duration::from_secs(1));
     }
     // Configure read() to block until at least 1 byte is received.
